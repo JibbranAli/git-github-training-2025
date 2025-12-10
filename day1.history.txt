@@ -1,0 +1,500 @@
+    9        volumes:
+   10          - name: tmp-dir
+   11            emptyDir: {}
+   12  ---
+   13  apiVersion: v1
+   14  kind: Service
+   15  metadata:
+   16    name: metrics-server
+   17    namespace: kube-system
+   18    labels:
+   19      k8s-app: metrics-server
+   20  spec:
+   21    selector:
+   22      k8s-app: metrics-server
+   23    ports:
+   24      - port: 443
+   25        targetPort: https
+   26  " >> metrics-server.yaml 
+   27  cat me
+   28  cat metrics-server.yaml 
+   29  clear
+   30  ls
+   31  kubectl apply -f metrics-server.yaml
+   32  kubectl get pods -n kube-system
+   33  kubectl top nodes
+   34  kubectl top pods
+   35  kubectl top pods
+   36  kubectl top nodes
+   37  clear
+   38  ls
+   39  kubectl get deployment
+   40  kubectl autoscale deployment apache-deployment --cpu-percent=50 --min=1 --max=5
+   41  kubectl get hp
+   42  kubectl get hpa
+   43  kubectl get hpa
+   44  kubectl get hpa
+   45  clear
+   46  ls
+   47  kubectl run -i --tty --rm debug-shell --image=amazonlinux -- bash
+   48  kubectl run -i --tty --rm debug-shell --image=amazonlinux -- bash
+   49  cd Do
+   50  cd Documents/
+   51  lls
+   52  cd devops_kubernetes_project/
+   53  ls
+   54  lcear
+   55  ls
+   56  clear
+   57  ls
+   58  vim persistent-volume-claim.yaml
+   59  ls
+   60  clear
+   61  ls
+   62  vim deployment.yaml 
+   63  vim deployment_pvc.yaml
+   64  ls
+   65  kubectl apply -f deployment_pvc.yaml 
+   66  kubectl get pods
+   67  kubectl get pvc
+   68  kubectl get storageclass
+   69  ls
+   70  vim persistent-volume-claim.yaml 
+   71  kubectl delete pvc my-pvc
+   72  kubectl apply -f persistent-volume-claim.yaml
+   73  kubectl get pvc
+   74  helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+   75  helm repo update
+   76  helm upgrade --install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver   --namespace kube-system   --set enableVolumeScheduling=true   --set enableVolumeResizing=true   --set enableVolumeSnapshot=true
+   77  aws configure get region
+   78  aws eks list-clusters --region ap-south-1
+   79  eksctl utils associate-iam-oidc-provider   --region ap-south-1   --cluster my-eks-cluster   --approve
+   80  eksctl create iamserviceaccount   --region ap-south-1   --name ebs-csi-controller-sa   --namespace kube-system   --cluster my-eks-cluster   --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy   --approve   --role-name AmazonEKS_EBS_CSI_DriverRole
+   81  eksctl create addon   --name aws-ebs-csi-driver   --cluster my-eks-cluster   --region ap-south-1   --service-account-role-arn arn:aws:iam::990738782301:role/AmazonEKS_EBS_CSI_DriverRole   --force
+   82  aws sts get-caller-identity --query Account --output text
+   83  kubectl get pods -n kube-system | grep ebs
+   84  kubectl delete pvc my-pvc
+   85  kubectl apply -f persistent-volume-claim.yaml
+   86  kubectl get pvc
+   87  clear
+   88  ls
+   89  kubectl delete pvc my-pvc
+   90  kubectl apply -f persistent-volume-claim.yaml
+   91  l
+   92  kubectl apply -f deployment_pvc.yaml 
+   93  aws configure get region
+   94  aws eks list-clusters --region ap-south-1
+   95  aws sts get-caller-identity --query Account --output text
+   96  eksctl utils associate-iam-oidc-provider   --region ap-south-1   --cluster my-eks-cluster   --approve
+   97  eksctl create iamserviceaccount   --region ap-south-1   --name ebs-csi-controller-sa   --namespace kube-system   --cluster my-eks-cluster   --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy   --approve   --role-name AmazonEKS_EBS_CSI_DriverRole
+   98  eksctl create addon   --name aws-ebs-csi-driver   --cluster my-eks-cluster   --region ap-south-1   --service-account-role-arn arn:aws:iam::990738782301:role/AmazonEKS_EBS_CSI_DriverRole   --force
+   99  kubectl get pods -n kube-system | grep ebs
+  100  kubectl delete pvc my-pvc
+  101  clear
+  102  kubectl get pvc
+  103  kubectl get pv
+  104  kubectl delete pvc my-pvc
+  105  kubectl get pv pvc-acb65136-1133-457a-8586-529525289dfb -o yaml
+  106  kubectl patch pv pvc-acb65136-1133-457a-8586-529525289dfb -p '{"metadata":{"finalizers": []}}' --type=merge
+  107  kubectl delete pv pvc-acb65136-1133-457a-8586-529525289dfb
+  108  aws ec2 delete-volume --volume-id vol-0eea566b04e6eea52 --region ap-south-1
+  109  aws ec2 delete-volume --volume-id vol-0eea566b04e6eea52 --region ap-south-1
+  110  aws ec2 detach-volume --volume-id vol-0eea566b04e6eea52 --region ap-south-1
+  111  clear
+  112  kubectl get pvc
+  113  ls
+  114  cat storage-class.yaml 
+  115  clear
+  116  kubectl apply -f storage-class.yaml 
+  117  cat persistent-volume-claim.yaml 
+  118  vim persistent-volume-claim.yaml 
+  119  kubectl apply -f persistent-volume-claim.yaml 
+  120  clear
+  121  cat deployment.yaml 
+  122  vim deployment_pvc.yaml 
+  123  kubectl apply -f deployment.yaml
+  124  kubectl get pvc
+  125  kubectl get pvc
+  126  kubectl apply -f deployment_pvc.yaml 
+  127  kubectl get pvc
+  128  clear
+  129  ls
+  130  kubectl get pvc
+  131  clear
+  132  ls
+  133  kubectl get pods
+  134  kubectl exec -it apache-deployment-86679894bd-k2vhh -- bash
+  135  ls
+  136  celar
+  137  ls
+  138  cat deployment_pvc.yaml 
+  139  clear
+  140  ls
+  141  kubectl exec -it apache-deployment-86679894bd-k2vhh -- bash
+  142  clear
+  143  ls
+  144  kubectl --help
+  145  clear
+  146  ls
+  147  cat dashboard-admin.yaml 
+  148  cat deployment_pvc.yaml 
+  149  clear
+  150  ls
+  151  rm -rf ingress.yaml 
+  152  ls
+  153  clear
+  154  ls
+  155  rm -rf temp.json 
+  156  ls
+  157  cat metrics-server.yaml 
+  158  clear
+  159  ls
+  160  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  161  helm repo update
+  162  # Install Prometheus and kube-state-metrics
+  163  helm install prometheus prometheus-community/kube-prometheus-stack
+  164  helm install prometheus prometheus-community/kube-prometheus-stack   --set prometheus.prometheusSpec.maximumStartupDurationSeconds=120
+  165  helm uninstall prometheus
+  166  helm install prometheus prometheus-community/kube-prometheus-stack   --set prometheus.prometheusSpec.maximumStartupDurationSeconds=120
+  167  kubectl port-forward svc/prometheus-grafana 3000:80
+  168  kubectl --namespace default get secrets prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+  169  kubectl get pvs
+  170  kubectl get pvc
+  171  kubectl get sc
+  172  kubectl get pvc
+  173  kubectl patch pvc my-pvc -p '{"metadata":{"finalizers":null}}' --type=merge
+  174  kubectl get pvc
+  175  kubectl get pvc
+  176  kubectl get pvc
+  177  kubectl get pvc
+  178  kubectl get pv
+  179  kubectl get pv
+  180  kubectl get pvs
+  181  kubectl get pvc
+  182  kubectl get pvc my-pvc -o yaml
+  183  kubectl patch pvc my-pvc -p '{"metadata":{"finalizers":null}}'
+  184      kubectl scale --replicas=5 deployment/apache-deployment
+  185  kubectl get pods
+  186  kubectl exec -it apache-deployment-86679894bd-frh7l -- bash
+  187  clear
+  188  ls
+  189  cd Documents/
+  190  ls
+  191  cd dev
+  192  cd devops_kubernetes_project/
+  193  clear
+  194  ls
+  195  ls
+  196  cat deployment_pvc.yaml 
+  197  ls
+  198  cat storage-class.yaml 
+  199  ls
+  200  cat dashboard-admin.yaml 
+  201  cat persistent-volume-claim.yaml 
+  202  cat deployment_pvc.yaml 
+  203  clear
+  204  ls
+  205  cd ..
+  206  clear
+  207  ls
+  208  mv devops_kubernetes_project/ devops_project_3
+  209  clear
+  210  ls
+  211  cd devops_kubernetes_project/
+  212  ls
+  213  clear
+  214  ls
+  215  cd Documents/
+  216  cd de
+  217  cd devops_kubernetes_project/
+  218  ls
+  219  cat prometheus-values.yaml 
+  220  clear
+  221  cat prometheus-values.yaml 
+  222  helm install prometheus prometheus-community/kube-prometheus-stack   --namespace monitoring --create-namespace   -f prometheus-values.yaml
+  223  kubectl --namespace monitoring get secrets prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+  224  kubectl get pods -n monitoring
+  225  kubectl get svc -n monitoring
+  226  kubectl port-forward svc/prometheus-grafana -n monitoring 3000:80
+  227  kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090
+  228  cd C:\Users\Jibbran\Documents\Jazbaa-4.0\project
+  229  cd Documents/
+  230  cd Jazbaa-4.0/
+  231  cd project
+  232  git init 
+  233  ssh -T git@github.com
+  234  git remote add origin https://github.com/LWindia/Jazbaa4.0.git
+  235  git push -u origin main
+  236  git init 
+  237  git add . 
+  238  git commit -m "v1"
+  239  git branch -M main
+  240  git remote add origin https://github.com/LWindia/Jazbaa4.0.git
+  241  git push -u origin main
+  242  ls 
+  243  ls -l 
+  244  git push -u origin main
+  245  [200~git clone https://github.com/JibbranAli/Jazbaa4.0.git
+  246  [200~git clone https://github.com/JibbranAli/Jazbaa4.0.git
+  247  git clone https://github.com/JibbranAli/Jazbaa4.0.git
+  248  git push -u origin main
+  249  cd Documents
+  250  cd lw-Landing-page/
+  251  cd aws-enablement/
+  252  cd project
+  253  rm -rf .git
+  254  rm -rf .gitignore 
+  255  cd .bolt/
+  256  ls
+  257  cd prompt 
+  258  cat prompt 
+  259  cd ..
+  260  ld
+  261  ls
+  262  git init
+  263  git commit -m "first commit"
+  264  git add . 
+  265  git commit -m "first commit"
+  266  git branch -M main
+  267  git remote add origin git@github.com:LWindia/aws-enablement-training.git
+  268  git remote add origin git@github.com:LWindia/aws-enablement-training.git
+  269  git branch -M main
+  270  git remote add origin https://github.com/LWindia/aws-enablement-training.git
+  271  git push oigin main
+  272  git init
+  273  git add .
+  274  git commit -m "first commit"
+  275  git remote add origin git@github.com:LWindia/aws-enablement-training.git
+  276  git remote add origin git@github.com:LWindia/aws-enablement-training.git
+  277  git push -u origin main
+  278  cd Documents/
+  279  mkdir my-agent
+  280  cd my-agent/
+  281  pip install google-generativeai python-dotenv pyttsx3 speechrecognition
+  282  pip install google-generativeai python-dotenv pyttsx3 speechrecognition
+  283  touch .env
+  284  vim .env 
+  285  touch agent.py
+  286  vim agent.py 
+  287  python agent.py
+  288  python agent.py
+  289  vim agent.py 
+  290  vim myagent.py
+  291  notepad agent.py 
+  292  python agent.py 
+  293  notepad agent.py 
+  294  python agent.py 
+  295  pip install google-generativeai python-dotenv SpeechRecognition edge-tts pyaudio
+  296  notepad agent.py 
+  297  python agent.py 
+  298  pip install playsound==1.2.2 edge-tts
+  299  notepad agent.py 
+  300  python agent.py 
+  301  notepad agent.py 
+  302  python agent.py 
+  303  cd Documents
+  304  cd Diretory
+  305  ls
+  306  pwd
+  307  cd 
+  308  cd  D:\Documents\Directory\
+  309  cd  
+  310  cd  D
+  311  cd 
+  312  ls
+  313  #!/bin/bash
+  314  set -e
+  315  # Create project folder
+  316  mkdir -p aws-agent
+  317  cd Downloads/
+  318  chmod 400 "jibbran.pem"
+  319  ssh -i "jibbran.pem" ec2-user@ec2-15-206-170-30.ap-south-1.compute.amazonaws.com
+  320  cd Documents/
+  321  chmod 400 "jibbran.pem"
+  322  ec2-65-2-131-104.ap-south-1.compute.amazonaws.com
+  323  ssh -i "jibbran.pem" ec2-user@ec2-65-2-131-104.ap-south-1.compute.amazonaws.com
+  324  cd Downloads/
+  325  chmod 400 "devops-project5.pem"
+  326  ssh -i "devops-project5.pem" ec2-user@ec2-13-201-43-17.ap-south-1.compute.amazonaws.com
+  327  cd  C:\Users\Jibbran\Documents\New folder
+  328  cd Documents/
+  329  cd New\ folder/
+  330  ls
+  331  scp -i "sir-openssh.pem" -r . ec2-user@ec2-15-206-89-21.ap-south-1.compute.amazonaws.com:/home/ec2-user
+  332  scp -i "sir.pem" -r . ec2-user@ec2-15-206-89-21.ap-south-1.compute.amazonaws.com:/home/ec2-user
+  333  chmod 600 sir.pem
+  334  chmod 600 sir.pem
+  335  mkdir C:\Users\Jibbran\.ssh
+  336  copy "C:\Users\Jibbran\Documents\New folder\sir.pem" "C:\Users\Jibbran\.ssh\sir.pem"
+  337  cp "C:\Users\Jibbran\Documents\New folder\sir.pem" "C:\Users\Jibbran\.ssh\sir.pem"
+  338  cp "C:/Users/Jibbran/Documents/New folder/sir.pem" "C:/Users/Jibbran/.ssh/sir.pem"
+  339  touch abc.bin
+  340  vim abc.bin 
+  341  xxd abc.bin 
+  342  unzip
+  343  cd Desktop/ocp/
+  344  ls
+  345  chmod +x *.sh
+  346  ./setup.sh 
+  347  ./setup.sh 
+  348  curl -s -H "X-aws-ec2-metadata-token: $TOKEN"   http://169.254.169.254/latest/meta-data/
+  349  curl -s -H "X-aws-ec2-metadata-token: $TOKEN"   http://54.234.207.18/latest/meta-data/
+  350  TOKEN=$(curl -sX PUT "http://54.234.207.18/latest/api/token" \
+  351    -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+  352  [200~curl -s -H "X-aws-ec2-metadata-token: $TOKEN"   http://54.234.207.18/latest/meta-data/
+  353  curl -s -H "X-aws-ec2-metadata-token: $TOKEN"   http://54.234.207.18/latest/meta-data/
+  354  curl -s http://$54.210.50.238 | head -n 20
+  355  cd Downloads/
+  356  ssh -i "project.pem" ec2-user@ec2-52-201-244-26.compute-1.amazonaws.com
+  357  ssh -i "project.pem" ec2-user@ec2-52-201-244-26.compute-1.amazonaws.com
+  358  ssh -i "project.pem" ec2-user@ec2-52-201-244-26.compute-1.amazonaws.com
+  359  ssh -i "project.pem" ec2-user@ec2-54-90-134-89.compute-1.amazonaws.com
+  360  exit
+  361  cd .ssh
+  362  ssh-copy-id  root@192.168.0.120
+  363  ssh root@192.168.0.120
+  364  cd Documents/
+  365  ls 
+  366  [200~git --version
+  367  git --version
+  368  git config
+  369  git config --global -l
+  370  git status 
+  371  git
+  372  git --version
+  373  cd  Documents 
+  374  mkdir git_&_github_training_dec2025
+  375  mkdir git_&_github_tra
+  376  mkdir dec_git_&_github_tra
+  377  mkdir dec_git_github_tra
+  378  cd dec_git_github_tra/
+  379  cd .. 
+  380  cd dec2025
+  381  mkdir dec2025
+  382  cd dec2025/
+  383  touch a.txt
+  384  ls 
+  385  ls -a
+  386  vim a.txt 
+  387  cat a.txt 
+  388  git config --help
+  389  git config list
+  390  git config --golbal urser.name "JibbranALi"
+  391  git config urser.name "JibbranALi"
+  392  git config --global -l 
+  393  git config --global user.name "JibbranAli"
+  394  git config --global user.email "jibbranali1997@gmial.com"
+  395  git login 
+  396  git --help 
+  397  git config --global -l 
+  398  ls -a
+  399  git init 
+  400  ls -a
+  401  cd .git/
+  402  ls
+  403  cat HEAD 
+  404  cd ..
+  405  git status 
+  406  git add a.txt 
+  407  ls -a
+  408  git status 
+  409  git ls-files
+  410  git commit -m "First Commit created a.txt file"
+  411  git status 
+  412  git log
+  413  git log --oneline
+  414  git log --stat
+  415  git log --online --graph --all
+  416  git log --graph --oneline --all
+  417  git show
+  418  git show HEAD
+  419  git baranch -M main
+  420  git branch -M main
+  421  git remote add origin https://github.com/JibbranAli/git-github-training-2025.git
+  422  git remote add origin https://github.com/JibbranAli/git-github-training-2025.git
+  423  git remote add origin https://github.com/JibbranAli/git-github-training-2025.git
+  424  git push -u origin main
+  425  git show
+  426  ls
+  427  vim a.txt 
+  428  git status 
+  429  git commit -m "added 2nd line"
+  430  git add a.txt 
+  431  git commit -m "added 2nd line"
+  432  git show
+  433  git show HEAD
+  434  git push -u origin main 
+  435  git show HEAD~1
+  436  git show HEAD~2
+  437  git show HEAD~1
+  438  git show
+  439  touch b.txt 
+  440  git add b.txt 
+  441  git show
+  442  git status 
+  443  git add b.txt 
+  444  vim b.txt 
+  445  git push -u origin main 
+  446  git log
+  447  git show 37cd394
+  448  git show b70cd369
+  449  git ls-tree
+  450  git ls-tree --name-only HEAD
+  451  git log
+  452  git diff 37cd39  b70cd3
+  453  touch file1.txt
+  454  echo "temp line" >> file1.txt 
+  455  cat file1.txt 
+  456  git add .
+  457  git status 
+  458  git log --online
+  459  git log --oneline
+  460  git commit -m "Add b file and file1"
+  461  git log --oneline
+  462  git push -u origin main
+  463  git logs --online
+  464  git log --online
+  465  git log --oneline
+  466  git rm file1.txt 
+  467  git status
+  468  ls
+  469  ls
+  470  ls -a
+  471  cd .git/
+  472  ls
+  473  cat HEAD 
+  474  cd info/
+  475  ls
+  476  cd ..
+  477  ls
+  478  cd logs/
+  479  ls
+  480  cat HEAD 
+  481  cd refs/
+  482  ls
+  483  cd remotes/
+  484  ls
+  485  cd origin/
+  486  ls
+  487  cd main 
+  488  cat main 
+  489  history
+  490  history > day1.history.txt
+  491  git add day1.history.txt 
+  492  git add .
+  493  git commit -m "history " 
+  494  git status
+  495  cd 
+  496  ls
+  497  cd ..
+  498  cd /Documents/dec2025/
+  499  cd 
+  500  exit
+  501  cd Documents/
+  502  dir
+  503  cd dec2025/
+  504  ;s
+  505  ls
+  506  ls -a
+  507  history 
+  508  history  > day1.history.txt
