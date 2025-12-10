@@ -1,4 +1,3 @@
-  261  ls
   262  git init
   263  git commit -m "first commit"
   264  git add . 
